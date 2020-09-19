@@ -1,0 +1,18 @@
+jobs:
+  - job: demo_app
+    steps:
+      - checkout: self
+        displayName: checkout self
+      - task: Gradle@2
+        displayName: buildNoDecoderExtensionsDebug
+        inputs:
+          gradleWrapperFile: gradlew
+          tasks: :demo:buildNoDecoderExtensionsDebug
+      - task: CopyFiles@2
+        displayName: copy files
+        inputs:
+          Contents: "**/*.apk"
+          TargetFolder: $(Build.ArtifactStagingDirectory)
+      - publish: $(Build.ArtifactStagingDirectory)
+        artifact: demo_app
+        displayName: publish
