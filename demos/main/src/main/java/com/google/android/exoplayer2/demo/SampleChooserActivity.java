@@ -92,7 +92,8 @@ public class SampleChooserActivity extends AppCompatActivity
     sampleListView.setOnChildClickListener(this);
 
     Intent intent = getIntent();
-    String dataUri = intent.getDataString();
+    // String dataUri = intent.getDataString();
+    String dataUri = "http://emby.home.crucible.org.uk:8000/media.exolist.json";
     if (dataUri != null) {
       uris = new String[] {dataUri};
     } else {
