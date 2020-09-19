@@ -5,6 +5,9 @@ jobs:
     steps:
       - checkout: self
         displayName: checkout self
+      - script: |
+          echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
+        displayName: install ndk
       - task: Gradle@2
         displayName: tasks
         inputs:
