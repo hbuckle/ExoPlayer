@@ -1,13 +1,21 @@
 jobs:
   - job: demo_app
+    pool:
+      vmImage: ubuntu-latest
     steps:
       - checkout: self
         displayName: checkout self
+      - task: Gradle@2
+        displayName: tasks
+        inputs:
+          gradleWrapperFile: gradlew
+          tasks: :demo:tasks
       - task: Gradle@2
         displayName: buildNoDecoderExtensionsDebug
         inputs:
           gradleWrapperFile: gradlew
           tasks: :demo:buildNoDecoderExtensionsDebug
+          options: --info
       - task: CopyFiles@2
         displayName: copy files
         inputs:

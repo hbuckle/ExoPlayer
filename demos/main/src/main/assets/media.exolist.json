@@ -1,5 +1,14 @@
 [
   {
+    "name": "Crucible",
+    "samples": [
+      {
+        "name": "Vertigo",
+        "uri": "http://10.0.0.8:8000/Vertigo.mkv"
+      }
+    ]
+  },
+  {
     "name": "YouTube DASH",
     "samples": [
       {
