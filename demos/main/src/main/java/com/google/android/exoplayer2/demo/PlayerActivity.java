@@ -96,7 +96,7 @@ public class PlayerActivity extends AppCompatActivity
   private List<MediaItem> mediaItems;
   private DefaultTrackSelector trackSelector;
   private DefaultTrackSelector.Parameters trackSelectorParameters;
-  private DebugTextViewHelper debugViewHelper;
+  // private DebugTextViewHelper debugViewHelper;
   private TrackGroupArray lastSeenTrackGroupArray;
   private boolean startAutoPlay;
   private int startWindow;
@@ -305,8 +305,8 @@ public class PlayerActivity extends AppCompatActivity
       player.setPlayWhenReady(startAutoPlay);
       playerView.setPlayer(player);
       playerView.setPlaybackPreparer(this);
-      debugViewHelper = new DebugTextViewHelper(player, debugTextView);
-      debugViewHelper.start();
+      // debugViewHelper = new DebugTextViewHelper(player, debugTextView);
+      // debugViewHelper.start();
     }
     boolean haveStartPosition = startWindow != C.INDEX_UNSET;
     if (haveStartPosition) {
@@ -385,8 +385,8 @@ public class PlayerActivity extends AppCompatActivity
     if (player != null) {
       updateTrackSelectorParameters();
       updateStartPosition();
-      debugViewHelper.stop();
-      debugViewHelper = null;
+      // debugViewHelper.stop();
+      // debugViewHelper = null;
       player.release();
       player = null;
       mediaItems = Collections.emptyList();

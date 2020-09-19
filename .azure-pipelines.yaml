@@ -11,10 +11,10 @@ jobs:
           gradleWrapperFile: gradlew
           tasks: :demo:tasks
       - task: Gradle@2
-        displayName: assembleNoDecoderExtensions
+        displayName: assembleWithDecoderExtensions
         inputs:
           gradleWrapperFile: gradlew
-          tasks: :demo:assembleNoDecoderExtensions
+          tasks: :demo:assembleWithDecoderExtensions
           options: --info
       - task: CopyFiles@2
         displayName: copy files
