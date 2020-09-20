@@ -319,13 +319,13 @@ public class PlayerActivity extends AppCompatActivity
   }
 
   private List<MediaItem> createMediaItems(Intent intent) {
-    String action = intent.getAction();
-    boolean actionIsListView = IntentUtil.ACTION_VIEW_LIST.equals(action);
-    if (!actionIsListView && !IntentUtil.ACTION_VIEW.equals(action)) {
-      showToast(getString(R.string.unexpected_intent_action, action));
-      finish();
-      return Collections.emptyList();
-    }
+    // String action = intent.getAction();
+    // boolean actionIsListView = IntentUtil.ACTION_VIEW_LIST.equals(action);
+    // if (!actionIsListView && !IntentUtil.ACTION_VIEW.equals(action)) {
+    //   showToast(getString(R.string.unexpected_intent_action, action));
+    //   finish();
+    //   return Collections.emptyList();
+    // }
 
     List<MediaItem> mediaItems =
         createMediaItems(intent, DemoUtil.getDownloadTracker(/* context= */ this));
