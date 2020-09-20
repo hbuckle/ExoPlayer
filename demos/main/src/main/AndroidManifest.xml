@@ -51,6 +51,7 @@
     <activity android:name="com.google.android.exoplayer2.demo.PlayerActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" android:launchMode="singleTop" android:label="@string/application_name" android:theme="@style/PlayerTheme">
       <intent-filter>
         <action android:name="com.google.android.exoplayer.demo.action.VIEW" />
+        <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <data android:scheme="http" />
         <data android:scheme="https" />
@@ -61,6 +62,7 @@
       </intent-filter>
       <intent-filter>
         <action android:name="com.google.android.exoplayer.demo.action.VIEW" />
+        <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
 
         <data android:mimeType="video/*" />
@@ -80,6 +82,7 @@
 
       <intent-filter>
         <action android:name="com.google.android.exoplayer.demo.action.VIEW" />
+        <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
 
         <data android:scheme="" />
@@ -120,6 +123,7 @@
 
       <intent-filter>
         <action android:name="com.google.android.exoplayer.demo.action.VIEW" />
+        <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
 
         <data android:scheme="" />
