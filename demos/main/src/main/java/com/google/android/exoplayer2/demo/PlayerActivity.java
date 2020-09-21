@@ -296,8 +296,11 @@ public class PlayerActivity extends AppCompatActivity
       }) {
         @Override
         public byte[] getBody() {
-          String body = "hello";
-          return body.getBytes("utf-8");
+          try {
+            String body = "hello";
+            return body.getBytes("utf-8");
+          }
+          catch (Exception e) {}
         }
       };
 
