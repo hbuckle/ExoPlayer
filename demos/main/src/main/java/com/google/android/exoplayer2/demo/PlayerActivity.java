@@ -32,6 +32,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.MediaItem;
@@ -276,6 +278,24 @@ public class PlayerActivity extends AppCompatActivity
   protected boolean initializePlayer() {
     if (player == null) {
       Intent intent = getIntent();
+
+      RequestQueue queue = Volley.newRequestQueue(this);
+      String url ="http://crucible.home.crucible.org.uk:8001/exoplayer";
+      StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String response) {}
+        },
+        new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {}
+        }
+        @Override
+        public byte[] getBody() {
+          String body = "hello";
+          return body.getBytes("utf-8");
+        }
+      );
 
       mediaItems = createMediaItems(intent);
       if (mediaItems.isEmpty()) {

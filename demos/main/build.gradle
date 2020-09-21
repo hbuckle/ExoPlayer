@@ -70,6 +70,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:' + androidxAppCompatVersion
     implementation 'androidx.multidex:multidex:' + androidxMultidexVersion
     implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.android.volley:volley:1.1.1'
     implementation ('com.google.guava:guava:' + guavaVersion) {
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
         exclude group: 'org.checkerframework', module: 'checker-compat-qual'

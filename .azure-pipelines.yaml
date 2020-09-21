@@ -24,6 +24,7 @@ jobs:
         inputs:
           Contents: "**/*.apk"
           TargetFolder: $(Build.ArtifactStagingDirectory)
+          flattenFolders: true
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: demo_app
         displayName: publish
