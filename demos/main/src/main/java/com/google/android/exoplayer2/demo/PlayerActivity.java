@@ -295,14 +295,9 @@ public class PlayerActivity extends AppCompatActivity
           public void onErrorResponse(VolleyError error) {}
       }) {
         @Override
-        public byte[] getBody() {
-          try {
-            String body = "hello";
-            return body.getBytes("utf-8");
-          }
-          catch (Exception e) {
-            throw e;
-          }
+        public byte[] getBody() throws UnsupportedEncodingException {
+          String body = "hello";
+          return body.getBytes("utf-8");
         }
       };
 
