@@ -300,7 +300,9 @@ public class PlayerActivity extends AppCompatActivity
             String body = "hello";
             return body.getBytes("utf-8");
           }
-          catch (Exception e) {}
+          catch (Exception e) {
+            throw e;
+          }
         }
       };
 
