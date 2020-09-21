@@ -289,13 +289,13 @@ public class PlayerActivity extends AppCompatActivity
         new Response.ErrorListener() {
           @Override
           public void onErrorResponse(VolleyError error) {}
-        }
+      }) {
         @Override
         public byte[] getBody() {
           String body = "hello";
           return body.getBytes("utf-8");
         }
-      );
+      };
 
       mediaItems = createMediaItems(intent);
       if (mediaItems.isEmpty()) {
