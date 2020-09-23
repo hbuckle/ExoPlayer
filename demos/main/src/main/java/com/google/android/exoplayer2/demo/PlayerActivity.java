@@ -296,8 +296,13 @@ public class PlayerActivity extends AppCompatActivity
         new Response.ErrorListener() {
           @Override
           public void onErrorResponse(VolleyError error) {
-            String message = new String(error.networkResponse.data, "UTF-8");
-            showToast(message);
+            try {
+              String message = new String(error.networkResponse.data, "UTF-8");
+              showToast(message);
+            }
+            catch (Exception e) {
+              showToast(error.ToString());
+            }
           }
       }) {
         @Override
