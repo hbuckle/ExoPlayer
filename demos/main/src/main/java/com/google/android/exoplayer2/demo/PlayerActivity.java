@@ -285,15 +285,20 @@ public class PlayerActivity extends AppCompatActivity
       Intent intent = getIntent();
 
       RequestQueue queue = Volley.newRequestQueue(this);
-      String url ="http://crucible.home.crucible.org.uk:8001/exoplayer";
+      String url = "http://crucible.home.crucible.org.uk:8001/exoplayer";
       StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
         new Response.Listener<String>() {
           @Override
-          public void onResponse(String response) {}
+          public void onResponse(String response) {
+            showToast("Got response");
+          }
         },
         new Response.ErrorListener() {
           @Override
-          public void onErrorResponse(VolleyError error) {}
+          public void onErrorResponse(VolleyError error) {
+            String message = new String(error.networkResponse.data, "UTF-8");
+            showToast(message);
+          }
       }) {
         @Override
         public byte[] getBody() {
