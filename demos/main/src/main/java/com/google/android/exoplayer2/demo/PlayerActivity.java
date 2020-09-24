@@ -301,7 +301,7 @@ public class PlayerActivity extends AppCompatActivity
               showToast(message);
             }
             catch (Exception e) {
-              showToast(error.ToString());
+              showToast(error.toString());
             }
           }
       }) {
