@@ -170,6 +170,38 @@ public class PlayerActivity extends AppCompatActivity
 
   @Override
   public void onResume() {
+    RequestQueue queue = Volley.newRequestQueue(this);
+    String url = "http://crucible.home.crucible.org.uk:8001/exoplayer";
+    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+      new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+          showToast("Got response");
+        }
+      },
+      new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+          try {
+            String message = new String(error.networkResponse.data, "UTF-8");
+            showToast(message);
+          }
+          catch (Exception e) {
+            showToast(error.toString());
+          }
+        }
+    }) {
+      @Override
+      public byte[] getBody() {
+        try {
+          String body = "hello";
+          return body.getBytes("utf-8");
+        }
+        catch (Exception e) {
+          return null;
+        }
+      }
+    };
     super.onResume();
     if (Util.SDK_INT <= 23 || player == null) {
       initializePlayer();
@@ -283,39 +315,6 @@ public class PlayerActivity extends AppCompatActivity
   protected boolean initializePlayer() {
     if (player == null) {
       Intent intent = getIntent();
-
-      RequestQueue queue = Volley.newRequestQueue(this);
-      String url = "http://crucible.home.crucible.org.uk:8001/exoplayer";
-      StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String response) {
-            showToast("Got response");
-          }
-        },
-        new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            try {
-              String message = new String(error.networkResponse.data, "UTF-8");
-              showToast(message);
-            }
-            catch (Exception e) {
-              showToast(error.toString());
-            }
-          }
-      }) {
-        @Override
-        public byte[] getBody() {
-          try {
-            String body = "hello";
-            return body.getBytes("utf-8");
-          }
-          catch (Exception e) {
-            return null;
-          }
-        }
-      };
 
       mediaItems = createMediaItems(intent);
       if (mediaItems.isEmpty()) {
