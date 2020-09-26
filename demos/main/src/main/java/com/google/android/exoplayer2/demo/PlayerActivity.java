@@ -32,12 +32,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.RequestQueue;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.MediaItem;
@@ -66,6 +60,7 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.util.ErrorMessageProvider;
 import com.google.android.exoplayer2.util.EventLogger;
 import com.google.android.exoplayer2.util.Util;
+import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -170,38 +165,6 @@ public class PlayerActivity extends AppCompatActivity
 
   @Override
   public void onResume() {
-    RequestQueue queue = Volley.newRequestQueue(this);
-    String url = "http://crucible.home.crucible.org.uk:8001/exoplayer";
-    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-      new Response.Listener<String>() {
-        @Override
-        public void onResponse(String response) {
-          showToast("Got response");
-        }
-      },
-      new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-          try {
-            String message = new String(error.networkResponse.data, "UTF-8");
-            showToast(message);
-          }
-          catch (Exception e) {
-            showToast(error.toString());
-          }
-        }
-    }) {
-      @Override
-      public byte[] getBody() {
-        try {
-          String body = "hello";
-          return body.getBytes("utf-8");
-        }
-        catch (Exception e) {
-          return null;
-        }
-      }
-    };
     super.onResume();
     if (Util.SDK_INT <= 23 || player == null) {
       initializePlayer();
@@ -365,6 +328,10 @@ public class PlayerActivity extends AppCompatActivity
     //   finish();
     //   return Collections.emptyList();
     // }
+    Bundle extras = intent.getExtras();
+    Gson gson = new Gson();
+    String json = gson.toJson(extras);
+    showToast(json);
 
     List<MediaItem> mediaItems =
         createMediaItems(intent, DemoUtil.getDownloadTracker(/* context= */ this));
